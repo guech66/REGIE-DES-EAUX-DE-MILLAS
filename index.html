@@ -5,133 +5,146 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-title" content="Régie des Eaux Millas"/>
-<meta name="theme-color" content="#0d3d7a"/>
+<meta name="theme-color" content="#1a3a6b"/>
 <title>Régie des Eaux — Millas</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --blue:#1a5fa8;--blue-dark:#0d3d7a;--blue-mid:#2d78c8;
-  --blue-light:#e8f1fb;--blue-border:#b5d4f4;
-  --text:#1a1a1a;--muted:#666;--border:#e0e0e0;
-  --bg:#fff;--bg2:#f5f7fa;--radius:12px;
+  --blue:#1a3a6b;--blue2:#2a5298;--blue3:#3a6cc8;
+  --gold:#c8a84b;--gold2:#e8c870;
+  --text:#1a1a1a;--muted:#555;--border:#dde3ee;
+  --bg:#fff;--bg2:#f4f6fb;--radius:12px;
 }
 @media(prefers-color-scheme:dark){
-  :root{--text:#f0f0f0;--muted:#999;--border:#2a2a2a;--bg:#141414;--bg2:#1e1e1e;--blue-light:#0d2540;--blue-border:#1a3a5c;}
+  :root{--text:#f0f0f0;--muted:#aaa;--border:#2a2a3a;--bg:#0f1420;--bg2:#161c2e;}
 }
 html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg2);color:var(--text);}
-.app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);box-shadow:0 0 40px rgba(0,0,0,.1);}
-.header{background:linear-gradient(135deg,#0d3d7a 0%,#1a5fa8 60%,#2d78c8 100%);color:white;padding:16px 18px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
-.header-logo{width:44px;height:44px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.2);}
-.header-logo i{color:#1a5fa8;font-size:22px;}
-.header-text h1{font-size:15px;font-weight:600;margin-bottom:2px;}
+.app{max-width:900px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);box-shadow:0 0 60px rgba(0,0,0,.12);}
+@media(min-width:700px){
+  .app{border-radius:16px;margin:20px auto;min-height:calc(100vh - 40px);}
+  .form-row{grid-template-columns:1fr 1fr 1fr!important;}
+  .result-grid{grid-template-columns:1fr 1fr 1fr 1fr!important;}
+  .stat-row{grid-template-columns:repeat(4,1fr)!important;}
+  .panel{padding:28px 36px!important;}
+  .bottom-nav .bnav{font-size:12px!important;}
+  .bottom-nav .bnav i{font-size:24px!important;}
+}
+.header{background:linear-gradient(135deg,#0d1f4a 0%,#1a3a6b 50%,#2a5298 100%);color:white;padding:14px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--gold);}
+.header-logo{height:52px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));}
+.header-text h1{font-size:15px;font-weight:700;margin-bottom:2px;letter-spacing:.3px;}
 .header-text p{font-size:11px;opacity:.8;}
-.auth-screen{position:fixed;inset:0;background:linear-gradient(160deg,#0d3d7a,#1a5fa8,#2d78c8);display:flex;align-items:center;justify-content:center;z-index:500;padding:20px;}
-.auth-box{background:white;border-radius:20px;padding:32px 24px;width:100%;max-width:360px;text-align:center;}
-.auth-box .logo{font-size:52px;margin-bottom:12px;}
-.auth-box h2{font-size:20px;font-weight:700;color:#0d3d7a;margin-bottom:4px;}
-.auth-box p{font-size:13px;color:#666;margin-bottom:24px;}
-.auth-tabs{display:flex;background:#f5f7fa;border-radius:10px;padding:4px;margin-bottom:20px;}
+.header-right{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.header-user{font-size:11px;opacity:.9;white-space:nowrap;}
+.btn-logout{padding:5px 11px;background:rgba(200,168,75,.25);border:1px solid rgba(200,168,75,.5);border-radius:20px;color:white;font-size:11px;cursor:pointer;}
+.auth-screen{position:fixed;inset:0;background:linear-gradient(160deg,#0d1f4a,#1a3a6b,#2a5298);display:flex;align-items:center;justify-content:center;z-index:500;padding:20px;}
+.auth-box{background:white;border-radius:20px;padding:32px 28px;width:100%;max-width:380px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.auth-logo{height:70px;width:auto;margin:0 auto 14px;display:block;}
+.auth-box h2{font-size:18px;font-weight:700;color:#1a3a6b;margin-bottom:4px;}
+.auth-box p{font-size:13px;color:#666;margin-bottom:20px;}
+.auth-gold{width:40px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;margin:0 auto 20px;}
+.auth-tabs{display:flex;background:#f4f6fb;border-radius:10px;padding:4px;margin-bottom:18px;}
 .auth-tab{flex:1;padding:8px;border:none;background:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;color:#666;transition:all .2s;}
-.auth-tab.active{background:white;color:#1a5fa8;box-shadow:0 1px 4px rgba(0,0,0,.1);}
+.auth-tab.active{background:white;color:#1a3a6b;box-shadow:0 1px 4px rgba(0,0,0,.1);}
 .auth-form{display:none;}
 .auth-form.active{display:block;}
-.auth-input{width:100%;padding:11px 14px;border:1px solid #e0e0e0;border-radius:10px;font-size:14px;margin-bottom:10px;transition:border .2s;}
-.auth-input:focus{outline:none;border-color:#1a5fa8;box-shadow:0 0 0 3px rgba(26,95,168,.1);}
-.btn-auth{width:100%;padding:13px;background:#1a5fa8;color:white;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;margin-top:4px;}
-.btn-auth:hover{background:#0d3d7a;}
+.auth-input{width:100%;padding:11px 14px;border:1.5px solid #dde3ee;border-radius:10px;font-size:14px;margin-bottom:10px;transition:border .2s;background:#fafbff;}
+.auth-input:focus{outline:none;border-color:#2a5298;box-shadow:0 0 0 3px rgba(42,82,152,.1);}
+.btn-auth{width:100%;padding:13px;background:linear-gradient(135deg,#1a3a6b,#2a5298);color:white;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;margin-top:4px;}
 .auth-error{background:#FCEBEB;color:#A32D2D;border-radius:8px;padding:9px 12px;font-size:13px;margin-top:10px;display:none;}
-.tabs{display:flex;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:76px;z-index:99;}
-.tab{flex:1;padding:10px 4px;font-size:11px;text-align:center;cursor:pointer;color:var(--muted);border:none;background:none;transition:all .2s;border-bottom:2px solid transparent;}
-.tab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:600;}
+.tabs{display:flex;background:var(--bg);border-bottom:2px solid var(--border);position:sticky;top:83px;z-index:99;}
+.tab{flex:1;padding:10px 4px;font-size:11px;text-align:center;cursor:pointer;color:var(--muted);border:none;background:none;transition:all .2s;border-bottom:3px solid transparent;margin-bottom:-2px;}
+.tab.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:700;}
 .tab i{display:block;font-size:20px;margin-bottom:2px;}
-.panel{display:none;padding:18px;flex:1;}
+.panel{display:none;padding:20px;flex:1;}
 .panel.active{display:block;}
-.section-title{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
-.upload-zone{border:2px dashed var(--blue-border);border-radius:var(--radius);padding:28px 16px;text-align:center;cursor:pointer;background:var(--blue-light);transition:all .2s;margin-bottom:14px;}
-.upload-zone:hover{background:#d4e8f7;border-color:var(--blue);}
-.upload-zone i{font-size:40px;color:var(--blue);display:block;margin-bottom:8px;}
-.upload-zone p{font-size:14px;color:var(--blue);font-weight:600;margin-bottom:4px;}
+.section-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;display:flex;align-items:center;gap:6px;padding-bottom:8px;border-bottom:2px solid var(--border);}
+.section-title i{color:var(--blue2);}
+.upload-zone{border:2px dashed #b5c8e8;border-radius:var(--radius);padding:30px 16px;text-align:center;cursor:pointer;background:linear-gradient(135deg,#f0f4ff,#e8f0fb);transition:all .2s;margin-bottom:16px;}
+.upload-zone:hover{background:linear-gradient(135deg,#e0eaff,#d4e3f7);border-color:var(--blue2);}
+.upload-zone i{font-size:42px;color:var(--blue2);display:block;margin-bottom:10px;}
+.upload-zone p{font-size:14px;color:var(--blue);font-weight:700;margin-bottom:4px;}
 .upload-zone span{font-size:12px;color:var(--muted);}
-#previewImg{width:100%;max-height:220px;object-fit:cover;border-radius:10px;display:none;margin-bottom:14px;border:2px solid var(--blue-border);}
+#previewImg{width:100%;max-height:240px;object-fit:cover;border-radius:10px;display:none;margin-bottom:14px;border:2px solid #b5c8e8;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
 .form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;}
-.form-group label{font-size:12px;font-weight:600;color:var(--muted);}
-.form-group input{padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg);color:var(--text);transition:border .2s;}
-.form-group input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,95,168,.1);}
-.btn-primary{width:100%;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s;}
-.btn-primary:hover{background:var(--blue-dark);}
-.btn-primary:disabled{background:#aaa;cursor:not-allowed;}
-.btn-secondary{padding:9px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;font-size:12px;cursor:pointer;color:var(--text);display:flex;align-items:center;gap:5px;}
-.btn-logout{padding:6px 12px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;color:white;font-size:11px;cursor:pointer;}
-.spinner{display:none;margin:12px auto;width:28px;height:28px;border:3px solid var(--blue-border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;}
+.form-group label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.form-group input{padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:var(--bg);color:var(--text);transition:border .2s;}
+.form-group input:focus{outline:none;border-color:var(--blue2);box-shadow:0 0 0 3px rgba(42,82,152,.1);}
+.btn-primary{width:100%;padding:13px;background:linear-gradient(135deg,#1a3a6b,#2a5298);color:white;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(26,58,107,.3);}
+.btn-primary:disabled{background:#aaa;cursor:not-allowed;box-shadow:none;}
+.btn-secondary{padding:9px 14px;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;font-size:12px;cursor:pointer;color:var(--text);display:flex;align-items:center;gap:5px;font-weight:600;}
+.spinner{display:none;margin:14px auto;width:30px;height:30px;border:3px solid #b5c8e8;border-top-color:var(--blue2);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
-.ai-result{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-top:14px;display:none;}
+.ai-result{background:linear-gradient(135deg,#f0f4ff,#e8f0fb);border:1.5px solid #b5c8e8;border-radius:var(--radius);padding:16px;margin-top:14px;display:none;}
 .ai-result-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
-.ai-result-header i{color:var(--blue);font-size:22px;}
-.ai-result-header span{font-size:14px;font-weight:600;color:var(--blue);}
-.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
-.result-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;}
-.result-item .lbl{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
-.result-item .val{font-size:15px;font-weight:600;color:var(--text);}
-.result-item.hl .val{color:var(--blue);font-size:20px;}
-.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;}
-.badge-ok{background:#eaf3de;color:#3B6D11;}
-.badge-warn{background:#FAEEDA;color:#854F0B;}
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#22c55e;color:white;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:600;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.3);text-align:center;max-width:90vw;opacity:0;transition:opacity .3s;pointer-events:none;}
+.ai-result-header i{color:var(--blue2);font-size:22px;}
+.ai-result-header span{font-size:14px;font-weight:700;color:var(--blue);}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.result-item{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;}
+.result-item .lbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.result-item .val{font-size:15px;font-weight:700;color:var(--text);}
+.result-item.hl .val{color:var(--blue2);font-size:22px;}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;}
+.badge-ok{background:#eaf3de;color:#2d5a0e;}
+.badge-warn{background:#fff3cd;color:#7c5a00;}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#22c55e;color:white;padding:12px 24px;border-radius:12px;font-size:13px;font-weight:700;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.3);text-align:center;max-width:90vw;opacity:0;transition:opacity .3s;pointer-events:none;}
 .toast.show{opacity:1;}
-.search-bar{display:flex;gap:8px;margin-bottom:12px;}
-.search-bar input{flex:1;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text);}
-.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:480px;}
-thead{background:var(--bg2);}
-th{padding:9px 10px;text-align:left;font-weight:600;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
-td{padding:9px 10px;border-bottom:1px solid var(--border);color:var(--text);}
+.search-bar{display:flex;gap:8px;margin-bottom:14px;}
+.search-bar input{flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text);}
+.table-wrap{overflow-x:auto;border:1.5px solid var(--border);border-radius:var(--radius);}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:500px;}
+thead{background:linear-gradient(135deg,#f0f4ff,#e8f0fb);}
+th{padding:10px 12px;text-align:left;font-weight:700;color:var(--blue);border-bottom:1.5px solid var(--border);white-space:nowrap;text-transform:uppercase;font-size:11px;letter-spacing:.5px;}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text);}
 tr:last-child td{border-bottom:none;}
-tr:hover td{background:var(--blue-light);}
-.badge-s{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;}
-.empty{text-align:center;color:var(--muted);font-size:13px;padding:30px 16px;}
-.empty i{font-size:40px;display:block;margin-bottom:10px;opacity:.4;}
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
-.stat-card{background:var(--bg2);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);}
-.stat-card .num{font-size:26px;font-weight:700;color:var(--blue);}
-.stat-card .lbl{font-size:10px;color:var(--muted);margin-top:3px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
-.recent-item{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);}
+tr:hover td{background:#f0f4ff;}
+.badge-s{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.empty{text-align:center;color:var(--muted);font-size:13px;padding:40px 16px;}
+.empty i{font-size:48px;display:block;margin-bottom:12px;opacity:.3;}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+.stat-card{background:linear-gradient(135deg,var(--bg2),#e8f0fb);border-radius:10px;padding:16px;text-align:center;border:1.5px solid var(--border);}
+.stat-card .num{font-size:28px;font-weight:700;color:var(--blue2);}
+.stat-card .lbl{font-size:10px;color:var(--muted);margin-top:4px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.recent-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
 .recent-item:last-child{border-bottom:none;}
-.avatar{width:38px;height:38px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.avatar i{color:var(--blue);font-size:18px;}
-.info-card{background:var(--blue-light);border:1px solid var(--blue-border);border-radius:var(--radius);padding:14px 16px;margin-bottom:12px;}
-.info-card h4{font-size:13px;font-weight:700;color:#0C447C;margin-bottom:7px;display:flex;align-items:center;gap:7px;}
-.info-card p,.info-card a{font-size:13px;color:#185FA5;line-height:1.7;}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a3a6b,#2a5298);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.avatar i{color:white;font-size:18px;}
+.info-card{background:linear-gradient(135deg,#f0f4ff,#e8f0fb);border:1.5px solid #b5c8e8;border-radius:var(--radius);padding:14px 16px;margin-bottom:12px;}
+.info-card h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+.info-card p,.info-card a{font-size:13px;color:#2a5298;line-height:1.8;}
 .info-card a{display:block;text-decoration:none;}
-.info-card.warn{background:#FAEEDA;border-color:#FAC775;}
-.info-card.warn h4{color:#854F0B;}
-.info-card.warn p{color:#854F0B;}
-.bottom-nav{display:flex;background:var(--bg);border-top:1px solid var(--border);position:sticky;bottom:0;z-index:99;}
-.bnav{flex:1;padding:10px 4px;font-size:10px;text-align:center;cursor:pointer;color:var(--muted);border:none;background:none;font-weight:600;text-transform:uppercase;letter-spacing:.5px;transition:color .2s;}
-.bnav.active{color:var(--blue);}
+.info-card.warn{background:linear-gradient(135deg,#fff8e1,#fff3cd);border-color:#f0c040;}
+.info-card.warn h4{color:#7c5a00;}
+.info-card.warn p{color:#7c5a00;}
+.bottom-nav{display:flex;background:var(--bg);border-top:2px solid var(--border);position:sticky;bottom:0;z-index:99;}
+.bnav{flex:1;padding:10px 4px;font-size:10px;text-align:center;cursor:pointer;color:var(--muted);border:none;background:none;font-weight:700;text-transform:uppercase;letter-spacing:.5px;transition:color .2s;border-top:3px solid transparent;}
+.bnav.active{color:var(--blue);border-top-color:var(--gold);}
 .bnav i{display:block;font-size:22px;margin-bottom:2px;}
-.loading-overlay{position:fixed;inset:0;background:rgba(13,61,122,.95);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:400;color:white;gap:16px;}
-.loading-overlay .spin{width:40px;height:40px;border:4px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .8s linear infinite;}
+.loading-overlay{position:fixed;inset:0;background:linear-gradient(160deg,#0d1f4a,#1a3a6b);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:400;color:white;gap:20px;}
+.loading-overlay img{height:80px;width:auto;filter:brightness(10);}
+.loading-overlay .spin{width:40px;height:40px;border:4px solid rgba(255,255,255,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
+.loading-overlay p{font-size:14px;opacity:.8;}
 </style>
 </head>
 <body><div class="loading-overlay" id="loadingOverlay">
-  <div style="font-size:48px">💧</div>
+  <img src="https://www.mairie-millas.fr/wp-content/uploads/2024/02/cropped-430045443_378521431651748_5897044832578041649_n-removebg-preview.png" alt="Logo Millas" onerror="this.style.display='none'">
   <div class="spin"></div>
-  <p>Connexion à la Régie des Eaux…</p>
+  <p>Régie des Eaux de Millas…</p>
 </div>
 
 <div class="auth-screen" id="authScreen" style="display:none;">
   <div class="auth-box">
-    <div class="logo">💧</div>
+    <img class="auth-logo" src="https://www.mairie-millas.fr/wp-content/uploads/2024/02/cropped-430045443_378521431651748_5897044832578041649_n-removebg-preview.png" alt="Logo Millas" onerror="this.style.display='none'">
     <h2>Régie des Eaux de Millas</h2>
-    <p>Connectez-vous pour accéder au portail de relevé</p>
+    <p>Portail de relevé de compteur — 66170 Millas</p>
+    <div class="auth-gold"></div>
     <div class="auth-tabs">
       <button class="auth-tab active" onclick="switchAuth('login')">Connexion</button>
       <button class="auth-tab" onclick="switchAuth('register')">Créer un compte</button>
     </div>
     <div class="auth-form active" id="form-login">
-      <input class="auth-input" type="email" id="loginEmail" placeholder="Email" autocomplete="email">
+      <input class="auth-input" type="email" id="loginEmail" placeholder="Adresse email" autocomplete="email">
       <input class="auth-input" type="password" id="loginPassword" placeholder="Mot de passe" autocomplete="current-password">
       <button class="btn-auth" onclick="doLogin()">Se connecter</button>
       <div class="auth-error" id="loginError"></div>
@@ -139,7 +152,7 @@ tr:hover td{background:var(--blue-light);}
     <div class="auth-form" id="form-register">
       <input class="auth-input" type="text" id="regPrenom" placeholder="Prénom">
       <input class="auth-input" type="text" id="regNom" placeholder="Nom">
-      <input class="auth-input" type="email" id="regEmail" placeholder="Email">
+      <input class="auth-input" type="email" id="regEmail" placeholder="Adresse email">
       <input class="auth-input" type="password" id="regPassword" placeholder="Mot de passe (6 caractères min.)">
       <button class="btn-auth" onclick="doRegister()">Créer mon compte</button>
       <div class="auth-error" id="registerError"></div>
@@ -149,25 +162,25 @@ tr:hover td{background:var(--blue-light);}
 
 <div class="app" id="mainApp" style="display:none;">
   <div class="header">
-    <div class="header-logo"><i class="ti ti-droplet"></i></div>
+    <img class="header-logo" src="https://www.mairie-millas.fr/wp-content/uploads/2024/02/cropped-430045443_378521431651748_5897044832578041649_n-removebg-preview.png" alt="Logo Millas" onerror="this.style.display='none'">
     <div class="header-text">
       <h1>Régie des Eaux de Millas</h1>
       <p>Portail de relevé de compteur — 66170 Millas</p>
     </div>
-    <div style="margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
-      <span id="headerUserName" style="font-size:11px;opacity:.85;"></span>
+    <div class="header-right">
+      <span class="header-user" id="headerUserName"></span>
       <button class="btn-logout" onclick="doLogout()"><i class="ti ti-logout" style="font-size:12px;"></i> Déconnexion</button>
     </div>
   </div>
 
   <div class="panel active" id="tab-releve">
     <div class="section-title"><i class="ti ti-camera"></i>Nouvelle déclaration de relevé</div>
-    <div class="upload-zone" onclick="document.getElementById('photoInput').click()" id="uploadZone">
+    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('photoInput').click()">
       <i class="ti ti-photo-up"></i>
-      <p>Prendre une photo du compteur</p>
-      <span>Appuyez pour photographier ou importer une image</span>
+      <p>Photographier ou importer depuis la galerie</p>
+      <span>Cliquez pour choisir une photo de votre compteur</span>
     </div>
-    <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none" onchange="handlePhoto(event)">
+    <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="handlePhoto(event)">
     <img id="previewImg" alt="Photo du compteur">
     <div class="form-row">
       <div class="form-group"><label>Prénom *</label><input type="text" id="prenom" placeholder="Jean"></div>
@@ -188,12 +201,12 @@ tr:hover td{background:var(--blue-light);}
         <span>Lecture IA du compteur</span>
       </div>
       <div class="result-grid">
-        <div class="result-item hl"><div class="lbl">Index relevé (m³)</div><div class="val" id="resIndex">—</div></div>
+        <div class="result-item hl"><div class="lbl">Index (m³)</div><div class="val" id="resIndex">—</div></div>
         <div class="result-item hl"><div class="lbl">N° de série</div><div class="val" id="resSerie">—</div></div>
         <div class="result-item"><div class="lbl">Confiance IA</div><div class="val" id="resConfiance">—</div></div>
         <div class="result-item"><div class="lbl">Type compteur</div><div class="val" id="resType">—</div></div>
       </div>
-      <div id="resBadge" style="margin-bottom:10px;"></div>
+      <div id="resBadge" style="margin-bottom:12px;"></div>
       <button class="btn-primary" onclick="saveReleve()">
         <i class="ti ti-device-floppy"></i> Enregistrer ce relevé
       </button>
@@ -203,17 +216,17 @@ tr:hover td{background:var(--blue-light);}
   <div class="panel" id="tab-tableau">
     <div class="section-title"><i class="ti ti-table"></i>Relevés enregistrés</div>
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="🔍 Rechercher..." oninput="filterTable()">
+      <input type="text" id="searchInput" placeholder="🔍 Rechercher un abonné, numéro...">
       <button class="btn-secondary" onclick="exportCSV()"><i class="ti ti-download"></i> CSV</button>
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Date</th><th>Abonné</th><th>Code</th><th>N° série</th><th>Index (m³)</th><th>Conso.</th><th>Statut</th></tr></thead>
+        <thead><tr><th>Date</th><th>Abonné</th><th>Code</th><th>N° série</th><th>Index m³</th><th>Conso.</th><th>Statut</th></tr></thead>
         <tbody id="tableBody"></tbody>
       </table>
     </div>
     <div id="emptyMsg" class="empty" style="display:none;">
-      <i class="ti ti-table-off"></i>Aucun relevé enregistré.
+      <i class="ti ti-table-off"></i>Aucun relevé enregistré.<br>Utilisez l'onglet "Relevé" pour commencer.
     </div>
   </div>
 
@@ -232,7 +245,7 @@ tr:hover td{background:var(--blue-light);}
     <div class="section-title"><i class="ti ti-building"></i>Informations pratiques</div>
     <div class="info-card warn">
       <h4><i class="ti ti-alert-triangle"></i>Restriction d'eau en cours</h4>
-      <p>Arrêté préfectoral n° DDTM/SER/2028-218-0001 — Niveau Alerte actif.</p>
+      <p>Arrêté préfectoral n° DDTM/SER/2028-218-0001 — Niveau Alerte actif. Économisez l'eau !</p>
     </div>
     <div class="info-card">
       <h4><i class="ti ti-clock"></i>Horaires d'ouverture</h4>
@@ -243,15 +256,17 @@ tr:hover td{background:var(--blue-light);}
       <h4><i class="ti ti-phone"></i>Contact & Urgences 24h/24</h4>
       <a href="tel:0468574006">📞 04.68.57.40.06</a>
       <a href="mailto:regiedeseaux@mairie-millas.fr">✉ regiedeseaux@mairie-millas.fr</a>
+      <p style="margin-top:6px;font-size:12px;">Astreinte 7j/7 — fuites avant compteur, réseau public</p>
     </div>
     <div class="info-card">
       <h4><i class="ti ti-map-pin"></i>Adresse</h4>
       <p>Place de l'Hôtel de Ville – BP 43 – 66170 Millas</p>
-      <a href="https://www.mairie-millas.fr/portail-regie-des-eaux-millas/" style="margin-top:6px;">🌐 Site officiel</a>
+      <p>Accueil : 2ème étage de la Mairie</p>
+      <a href="https://www.mairie-millas.fr/portail-regie-des-eaux-millas/" style="margin-top:6px;">🌐 Site officiel de la régie</a>
     </div>
     <div class="info-card">
       <h4><i class="ti ti-droplet"></i>Comment lire votre index ?</h4>
-      <p>Votre index = les <strong>chiffres noirs</strong> du compteur (m³).<br>À envoyer au plus tard le <strong>20 mai</strong>.</p>
+      <p>Votre index = les <strong>chiffres noirs</strong> du compteur (m³ consommés).<br>À envoyer au plus tard le <strong>20 mai</strong>.</p>
     </div>
     <div class="info-card">
       <h4><i class="ti ti-credit-card"></i>Paiement en ligne</h4>
@@ -317,12 +332,8 @@ window.doLogin = async () => {
   const password = document.getElementById('loginPassword').value;
   const err = document.getElementById('loginError');
   err.style.display = 'none';
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch(e) {
-    err.textContent = traduireErreur(e.code);
-    err.style.display = 'block';
-  }
+  try { await signInWithEmailAndPassword(auth, email, password); }
+  catch(e) { err.textContent = traduireErreur(e.code); err.style.display = 'block'; }
 };
 
 window.doRegister = async () => {
@@ -336,13 +347,10 @@ window.doRegister = async () => {
   try {
     const cred = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(cred.user, { displayName: prenom + ' ' + nom.toUpperCase() });
-  } catch(e) {
-    err.textContent = traduireErreur(e.code);
-    err.style.display = 'block';
-  }
+  } catch(e) { err.textContent = traduireErreur(e.code); err.style.display = 'block'; }
 };
 
-window.doLogout = async () => { await signOut(auth); showToast('Déconnexion réussie 👋', '#666'); };
+window.doLogout = async () => { await signOut(auth); showToast('Déconnexion réussie 👋', '#555'); };
 
 function traduireErreur(code) {
   const msgs = {
@@ -362,7 +370,7 @@ async function loadReleves() {
     const q = query(collection(db, 'releves'), orderBy('createdAt', 'desc'));
     const snap = await getDocs(q);
     releves = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-  } catch(e) { releves = []; }
+  } catch(e) { console.error('Erreur chargement:', e); releves = []; }
 }
 
 window.handlePhoto = (e) => {
@@ -376,6 +384,7 @@ window.handlePhoto = (e) => {
     img.style.display = 'block';
     document.getElementById('uploadZone').style.display = 'none';
     document.getElementById('aiResult').style.display = 'none';
+    window._parsed = null;
   };
   reader.readAsDataURL(file);
 };
@@ -387,68 +396,88 @@ window.analyzePhoto = async () => {
   spinner.style.display = 'block';
   document.getElementById('aiResult').style.display = 'none';
   try {
-    let msgs = [];
+    let messages = [];
     if (window._currentPhoto) {
-      const b64 = await new Promise(res => {
-        const r = new FileReader();
-        r.onload = e => res(e.target.result.split(',')[1]);
-        r.readAsDataURL(window._currentPhoto);
+      const base64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(window._currentPhoto);
       });
-      msgs = [{ role: 'user', content: [
-        { type: 'image', source: { type: 'base64', media_type: window._currentPhoto.type, data: b64 } },
-        { type: 'text', text: `Tu es un expert en lecture de compteurs d'eau. Analyse cette photo et retourne UNIQUEMENT un JSON valide sans texte ni backticks :
-{"index":"chiffres noirs en m³ ex:1234.567","numero_serie":"numéro visible ou INCONNU","confiance":"HAUTE ou MOYENNE ou FAIBLE","type_compteur":"Itron ou Sensus ou Elster ou Générique","anomalie":"AUCUNE ou POSSIBLE_FUITE ou PROGRESSION_ANORMALE ou COMPTEUR_BLOQUE"}` }
-      ]}];
+      messages = [{
+        role: 'user',
+        content: [
+          { type: 'image', source: { type: 'base64', media_type: window._currentPhoto.type || 'image/jpeg', data: base64 } },
+          { type: 'text', text: 'Analyse cette photo de compteur d\'eau et retourne UNIQUEMENT un objet JSON valide, sans texte avant ou après, sans markdown : {"index":"valeur en m³ ex 1234.567","numero_serie":"numéro sur le compteur ou INCONNU","confiance":"HAUTE ou MOYENNE ou FAIBLE","type_compteur":"Itron ou Sensus ou Elster ou Générique","anomalie":"AUCUNE ou POSSIBLE_FUITE ou PROGRESSION_ANORMALE ou COMPTEUR_BLOQUE"}' }
+        ]
+      }];
     } else {
-      msgs = [{ role: 'user', content: `Génère un exemple démo. Retourne UNIQUEMENT ce JSON sans backticks :
-{"index":"1847.320","numero_serie":"98L847203","confiance":"HAUTE","type_compteur":"Itron","anomalie":"AUCUNE"}` }];
+      messages = [{ role: 'user', content: 'Génère un exemple de relevé compteur eau fictif pour une démo. Retourne UNIQUEMENT ce JSON sans texte ni markdown : {"index":"1847.320","numero_serie":"98L847203","confiance":"HAUTE","type_compteur":"Itron","anomalie":"AUCUNE"}' }];
     }
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 500, messages: msgs })
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 500, messages })
     });
-    const data = await resp.json();
-    const text = data.content.map(i => i.text || '').join('');
-    const p = JSON.parse(text.replace(/```json|```/g, '').trim());
+
+    if (!response.ok) {
+      const errData = await response.json();
+      throw new Error(errData.error?.message || 'Erreur API ' + response.status);
+    }
+
+    const data = await response.json();
+    const rawText = data.content.map(c => c.text || '').join('').trim();
+    const jsonMatch = rawText.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) throw new Error('Réponse invalide de l\'IA');
+    const p = JSON.parse(jsonMatch[0]);
+
     document.getElementById('resIndex').textContent = p.index + ' m³';
     document.getElementById('resSerie').textContent = p.numero_serie;
     document.getElementById('resConfiance').textContent = p.confiance;
     document.getElementById('resType').textContent = p.type_compteur;
     document.getElementById('resBadge').innerHTML = p.anomalie === 'AUCUNE'
-      ? '<span class="badge badge-ok"><i class="ti ti-check" style="font-size:13px"></i> Lecture normale</span>'
+      ? '<span class="badge badge-ok"><i class="ti ti-check" style="font-size:13px"></i> Lecture normale — aucune anomalie</span>'
       : `<span class="badge badge-warn"><i class="ti ti-alert-triangle" style="font-size:13px"></i> Anomalie : ${p.anomalie.replace(/_/g,' ')}</span>`;
     document.getElementById('aiResult').style.display = 'block';
     window._parsed = p;
   } catch(err) {
-    alert('Erreur lors de l\'analyse. Réessayez.');
+    console.error('Erreur analyse:', err);
+    alert('Erreur lors de l\'analyse : ' + err.message);
   }
   btn.disabled = false;
   spinner.style.display = 'none';
 };
 
 window.saveReleve = async () => {
-  if (!window._parsed) return;
+  if (!window._parsed) { alert('Veuillez d\'abord analyser une photo.'); return; }
   const p = window._parsed;
   const prenom = document.getElementById('prenom').value.trim();
   const nom = document.getElementById('nom').value.trim();
   const date = document.getElementById('dateReleve').value;
   if (!prenom || !nom || !date) { alert('Veuillez renseigner prénom, nom et date.'); return; }
+
   const prev = releves.filter(r => r.numero_serie === p.numero_serie && r.numero_serie !== 'INCONNU').sort((a,b) => b.date.localeCompare(a.date))[0];
   const idx = parseFloat(p.index.replace(',','.'));
   const prevIdx = prev ? parseFloat(prev.index.replace(',','.')) : null;
-  const conso = prevIdx !== null ? Math.round((idx - prevIdx) * 10) / 10 : null;
+  const conso = (prevIdx !== null && !isNaN(prevIdx)) ? Math.round((idx - prevIdx) * 10) / 10 : null;
+
   const releve = {
     date, prenom, nom,
     code: document.getElementById('codeAbonne').value.trim(),
     adresse: document.getElementById('adresse').value.trim(),
     index: p.index, numero_serie: p.numero_serie,
     confiance: p.confiance, type_compteur: p.type_compteur,
-    anomalie: p.anomalie, conso: conso !== null ? conso : '—',
+    anomalie: p.anomalie,
+    conso: conso !== null ? conso : '—',
     statut: p.anomalie === 'AUCUNE' ? 'OK' : 'ALERTE'
   };
+
   try {
-    const ref = await addDoc(collection(db, 'releves'), { ...releve, createdAt: serverTimestamp(), userId: currentUser.uid, userEmail: currentUser.email });
+    const ref = await addDoc(collection(db, 'releves'), {
+      ...releve, createdAt: serverTimestamp(),
+      userId: currentUser.uid, userEmail: currentUser.email
+    });
     releve.id = ref.id;
     releves.unshift(releve);
     document.getElementById('aiResult').style.display = 'none';
@@ -457,60 +486,68 @@ window.saveReleve = async () => {
     ['prenom','nom','codeAbonne','adresse'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('dateReleve').value = new Date().toISOString().slice(0,10);
     document.getElementById('photoInput').value = '';
-    window._currentPhoto = null; window._parsed = null;
-    showToast('✅ Relevé enregistré !');
+    window._currentPhoto = null;
+    window._parsed = null;
+    showToast('✅ Relevé enregistré avec succès !');
     showTab('tableau');
-  } catch(e) { alert('Erreur sauvegarde : ' + e.message); }
+  } catch(e) {
+    console.error('Erreur sauvegarde:', e);
+    alert('Erreur lors de la sauvegarde : ' + e.message);
+  }
 };
 
 window.renderTable = (data) => {
   const body = document.getElementById('tableBody');
   const empty = document.getElementById('emptyMsg');
-  if (!data.length) { body.innerHTML = ''; empty.style.display = 'block'; return; }
+  if (!data || !data.length) { body.innerHTML = ''; empty.style.display = 'block'; return; }
   empty.style.display = 'none';
   body.innerHTML = data.map(r => `<tr>
     <td>${r.date ? new Date(r.date).toLocaleDateString('fr-FR') : '—'}</td>
     <td><strong>${r.nom||''}</strong> ${r.prenom||''}</td>
     <td>${r.code||'—'}</td>
-    <td style="font-size:11px;color:var(--muted)">${r.numero_serie||'—'}</td>
-    <td style="font-weight:700;color:var(--blue)">${r.index||'—'}</td>
-    <td>${r.conso !== '—' && r.conso ? r.conso+' m³' : '—'}</td>
-    <td>${r.statut==='OK' ? '<span class="badge-s" style="background:#eaf3de;color:#3B6D11">✓ OK</span>' : '<span class="badge-s" style="background:#FCEBEB;color:#A32D2D">⚠ Alerte</span>'}</td>
+    <td style="font-size:11px;color:var(--muted);font-family:monospace">${r.numero_serie||'—'}</td>
+    <td style="font-weight:700;color:var(--blue2)">${r.index||'—'} m³</td>
+    <td>${(r.conso !== '—' && r.conso !== null && r.conso !== undefined) ? r.conso+' m³' : '—'}</td>
+    <td>${r.statut==='OK'
+      ? '<span class="badge-s" style="background:#eaf3de;color:#2d5a0e">✓ OK</span>'
+      : '<span class="badge-s" style="background:#FCEBEB;color:#A32D2D">⚠ Alerte</span>'}</td>
   </tr>`).join('');
 };
 
-window.filterTable = () => {
+document.getElementById('searchInput').addEventListener('input', () => {
   const q = document.getElementById('searchInput').value.toLowerCase();
-  renderTable(releves.filter(r => (r.nom+' '+r.prenom+' '+r.code+' '+r.numero_serie).toLowerCase().includes(q)));
-};
+  window.renderTable(releves.filter(r => ((r.nom||'')+' '+(r.prenom||'')+' '+(r.code||'')+' '+(r.numero_serie||'')).toLowerCase().includes(q)));
+});
 
 window.exportCSV = () => {
   if (!releves.length) { alert('Aucun relevé à exporter.'); return; }
-  const h = ['Date','Prénom','Nom','Code','Adresse','N° série','Index (m³)','Conso (m³)','Type','Confiance','Anomalie','Statut'];
+  const h = ['Date','Prénom','Nom','Code abonné','Adresse','N° série','Index (m³)','Consommation (m³)','Type compteur','Confiance IA','Anomalie','Statut'];
   const rows = releves.map(r => [r.date,r.prenom,r.nom,r.code,r.adresse,r.numero_serie,r.index,r.conso,r.type_compteur,r.confiance,r.anomalie,r.statut].map(v=>'"'+(v||'')+'"').join(','));
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob(['\uFEFF'+[h.join(','),...rows].join('\n')], {type:'text/csv;charset=utf-8;'}));
-  a.download = 'releves_millas_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.download = 'releves_eaux_millas_'+new Date().toISOString().slice(0,10)+'.csv';
   a.click();
 };
 
 window.renderStats = () => {
   document.getElementById('statTotal').textContent = releves.length;
   const now = new Date();
-  document.getElementById('statMois').textContent = releves.filter(r => { const d=new Date(r.date); return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear(); }).length;
-  const consos = releves.filter(r => r.conso !== '—' && !isNaN(parseFloat(r.conso))).map(r => parseFloat(r.conso));
+  const mois = releves.filter(r => { const d=new Date(r.date); return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear(); });
+  document.getElementById('statMois').textContent = mois.length;
+  const consos = releves.filter(r => r.conso !== '—' && r.conso !== null && !isNaN(parseFloat(r.conso))).map(r => parseFloat(r.conso));
   document.getElementById('statMoy').textContent = consos.length ? Math.round(consos.reduce((a,b)=>a+b,0)/consos.length*10)/10+' m³' : '—';
   const list = document.getElementById('recentList');
-  if (!releves.length) { list.innerHTML = '<div class="empty"><i class="ti ti-clock-off"></i>Aucun relevé.</div>'; return; }
+  if (!releves.length) { list.innerHTML = '<div class="empty"><i class="ti ti-clock-off"></i>Aucun relevé pour le moment.</div>'; return; }
   list.innerHTML = releves.slice(0,6).map(r => `
     <div class="recent-item">
       <div class="avatar"><i class="ti ti-droplet"></i></div>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:600">${r.nom||''} ${r.prenom||''}</div>
+        <div style="font-size:13px;font-weight:700">${r.nom||''} ${r.prenom||''}</div>
         <div style="font-size:11px;color:var(--muted)">${r.date?new Date(r.date).toLocaleDateString('fr-FR'):'—'} — ${r.numero_serie||'—'}</div>
       </div>
       <div style="text-align:right">
-        <div style="font-size:16px;font-weight:700;color:var(--blue)">${r.index||'—'} m³</div>
+        <div style="font-size:18px;font-weight:700;color:var(--blue2)">${r.index||'—'} m³</div>
+        <div style="font-size:11px;color:var(--muted)">${(r.conso!=='—'&&r.conso)?'Conso: '+r.conso+' m³':''}</div>
       </div>
     </div>`).join('');
 };
@@ -530,7 +567,7 @@ window.showToast = (msg, bg='#22c55e') => {
   t.textContent = msg;
   t.style.background = bg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  setTimeout(() => t.classList.remove('show'), 3000);
 };
 
 document.getElementById('dateReleve').value = new Date().toISOString().slice(0,10);
